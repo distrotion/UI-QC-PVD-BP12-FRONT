@@ -40,8 +40,8 @@ class logindata {
   static String userPASS = '';
 }
 
-String GLOserver = 'http://127.0.0.1:17270/';
-// String GLOserver = 'http://172.23.10.40:17270/';
+// String GLOserver = 'http://127.0.0.1:17270/';
+String GLOserver = 'http://172.23.10.40:17270/';
 String server2 = 'http://172.23.10.168:14094/';
 String serverdata = 'http://172.23.10.40:1900/';
 

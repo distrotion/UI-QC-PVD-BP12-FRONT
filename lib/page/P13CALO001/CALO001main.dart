@@ -19,6 +19,7 @@ import '../../widget/QCWIDGET/W1SINGLESHOT/SINGLESHOTwidget.dart';
 import '../../widget/common/Advancedropdown.dart';
 import '../../widget/common/ComYNPopup.dart';
 import '../../widget/common/Loading.dart';
+import '../../widget/common/imgset.dart';
 import '../../widget/onlyINqcui/popup.dart';
 import '../P1FIRSTUI/FIRSTuiVAR.dart';
 import '../page1.dart';
@@ -29,28 +30,24 @@ class MICROVICKER_CALO001main extends StatelessWidget {
   CALO001SCHEMA? data;
   @override
   Widget build(BuildContext context) {
-    return _TRICKER_CALO001_BlocBuffer(
-      data: data,
-    );
+    return _TRICKER_CALO001_BlocBuffer(data: data);
   }
 }
 
 class _TRICKER_CALO001_BlocBuffer extends StatelessWidget {
-  _TRICKER_CALO001_BlocBuffer({
-    Key? key,
-    this.data,
-  }) : super(key: key);
+  _TRICKER_CALO001_BlocBuffer({Key? key, this.data}) : super(key: key);
   CALO001SCHEMA? data;
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-        create: (_) => TRICKER_CALO001_Bloc(),
-        child: BlocBuilder<TRICKER_CALO001_Bloc, String>(
-          builder: (context, trick) {
-            return ROCKWELL_CALO001body(data: data);
-          },
-        ));
+      create: (_) => TRICKER_CALO001_Bloc(),
+      child: BlocBuilder<TRICKER_CALO001_Bloc, String>(
+        builder: (context, trick) {
+          return ROCKWELL_CALO001body(data: data);
+        },
+      ),
+    );
   }
 }
 
@@ -68,6 +65,7 @@ class _ROCKWELL_CALO001bodyState extends State<ROCKWELL_CALO001body> {
     super.initState();
     BackButtonInterceptor.add(myInterceptor);
     context.read<CALO001_Bloc>().add(CALO001_READ());
+    CALO001var.base64pic01 = imgw;
     CALO001var.valueX = '';
     CALO001var.valueY = '';
     CALO001var.valueZ = '';
@@ -147,7 +145,10 @@ class _ROCKWELL_CALO001bodyState extends State<ROCKWELL_CALO001body> {
 
         if (CALO001var.PCSleft == '0') {
           BlocProvider.of<BlocNotification>(contextGB).UpdateNotification(
-              "ITEM STATUS", "COMPLETE DATA", enumNotificationlist.Success);
+            "ITEM STATUS",
+            "COMPLETE DATA",
+            enumNotificationlist.Success,
+          );
         }
 
         widget.data?.UPDATE = '-';
@@ -325,12 +326,12 @@ class _ROCKWELL_CALO001bodyState extends State<ROCKWELL_CALO001body> {
         String FORMULA2 = '';
 
         if (CALO001var.valueX != '' && CALO001var.valueY != ''
-            // &&
-            // CALO001var.Result == '' &&
-            // CALO001var.Result1 == '' &&
-            // CALO001var.Result2 == '' &&
-            // CALO001var.valueZ != ''
-            ) {
+        // &&
+        // CALO001var.Result == '' &&
+        // CALO001var.Result1 == '' &&
+        // CALO001var.Result2 == '' &&
+        // CALO001var.valueZ != ''
+        ) {
           if (data.length > 0) {
             final definable = MathNodeExpression.getPotentialDefinable(
               data[0],
@@ -346,15 +347,11 @@ class _ROCKWELL_CALO001bodyState extends State<ROCKWELL_CALO001body> {
             final variableValues = <String, double>{};
             for (final variable in definable.variables) {
               print('Enter value for $variable:');
-              final double value = double.parse(
-                stdin.readLineSync() as String,
-              );
+              final double value = double.parse(stdin.readLineSync() as String);
               variableValues[variable] = value;
             }
 
-            final result = expression.calc(
-              MathVariableValues(variableValues),
-            );
+            final result = expression.calc(MathVariableValues(variableValues));
 
             print('Result: $result');
             CALO001var.iscontrol = true;
@@ -420,9 +417,9 @@ class _ROCKWELL_CALO001bodyState extends State<ROCKWELL_CALO001body> {
               CALO001var.POINTs != '' &&
               CALO001var.ItemPickSELECT != '') {
             if (int.parse(CALO001var.POINTs) > CALO001var.confirmdata.length) {
-              context
-                  .read<TRICKER_CALO001_Bloc>()
-                  .add(TRICKER_CALO001confirmdata());
+              context.read<TRICKER_CALO001_Bloc>().add(
+                TRICKER_CALO001confirmdata(),
+              );
             } else {
               WORNINGpop(context, "Have completed POINTs");
             }
@@ -470,117 +467,121 @@ class _ROCKWELL_CALO001bodyState extends State<ROCKWELL_CALO001body> {
       ITEMleftUNIT: CALO001var.ITEMleftUNIT,
       ITEMleftVALUE: CALO001var.ITEMleftVALUE,
       PICB64: CALO001var.PICs,
-      invaluewid: SizedBox(
+      invaluewid: Container(
         height: 119,
+        // color: Colors.amber,
         child: SingleChildScrollView(
-          child: Column(
+          child: Row(
             children: [
-              Row(
+              Column(
                 children: [
-                  SizedBox(
-                    width: 120,
-                    child: Center(
-                      child: Text("D1"),
-                    ),
+                  Row(
+                    children: [
+                      SizedBox(width: 40, child: Center(child: Text("D1"))),
+                      ComInputText(
+                        height: 40,
+                        width: 200,
+                        isEnabled: CALO001var.edit,
+                        isNumberOnly: true,
+                        isContr: CALO001var.iscontrol,
+                        fnContr: (input) {
+                          setState(() {
+                            CALO001var.iscontrol = input;
+                          });
+                        },
+                        sValue: CALO001var.valueX,
+                        returnfunc: (String s) {
+                          setState(() {
+                            CALO001var.valueX = s;
+                          });
+                        },
+                      ),
+                    ],
                   ),
-                  ComInputText(
-                    height: 40,
-                    width: 200,
-                    isEnabled: CALO001var.edit,
-                    isNumberOnly: true,
-                    isContr: CALO001var.iscontrol,
-                    fnContr: (input) {
-                      setState(() {
-                        CALO001var.iscontrol = input;
-                      });
-                    },
-                    sValue: CALO001var.valueX,
-                    returnfunc: (String s) {
-                      setState(() {
-                        CALO001var.valueX = s;
-                      });
-                    },
+                  Row(
+                    children: [
+                      SizedBox(width: 40, child: Center(child: Text("D2"))),
+                      ComInputText(
+                        height: 40,
+                        width: 200,
+                        isEnabled: CALO001var.edit,
+                        isNumberOnly: true,
+                        isContr: CALO001var.iscontrol,
+                        fnContr: (input) {
+                          setState(() {
+                            CALO001var.iscontrol = input;
+                          });
+                        },
+                        sValue: CALO001var.valueY,
+                        returnfunc: (String s) {
+                          setState(() {
+                            CALO001var.valueY = s;
+                          });
+                        },
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      SizedBox(width: 40, child: Center(child: Text("Result"))),
+                      ComInputText(
+                        height: 40,
+                        width: 200,
+                        isEnabled: false,
+                        isContr: CALO001var.iscontrol,
+                        fnContr: (input) {
+                          setState(() {
+                            CALO001var.iscontrol = input;
+                          });
+                        },
+                        sValue: CALO001var.Result,
+                        returnfunc: (String s) {
+                          setState(() {
+                            CALO001var.Result = s;
+                          });
+                        },
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      SizedBox(
+                        width: 40,
+                        child: Center(child: Text("FORMULA")),
+                      ),
+                      ComInputText(
+                        height: 40,
+                        width: 200,
+                        isEnabled: false,
+                        isContr: CALO001var.iscontrol,
+                        fnContr: (input) {
+                          setState(() {
+                            CALO001var.iscontrol = input;
+                          });
+                        },
+                        sValue: CALO001var.FORMULA,
+                        returnfunc: (String s) {
+                          setState(() {
+                            CALO001var.FORMULA = s;
+                          });
+                        },
+                      ),
+                    ],
                   ),
                 ],
               ),
-              Row(
+              Column(
                 children: [
-                  SizedBox(
-                    width: 120,
-                    child: Center(
-                      child: Text("D2"),
-                    ),
-                  ),
-                  ComInputText(
-                    height: 40,
+                  PicShow(
                     width: 200,
-                    isEnabled: CALO001var.edit,
-                    isNumberOnly: true,
-                    isContr: CALO001var.iscontrol,
-                    fnContr: (input) {
-                      setState(() {
-                        CALO001var.iscontrol = input;
-                      });
-                    },
-                    sValue: CALO001var.valueY,
-                    returnfunc: (String s) {
-                      setState(() {
-                        CALO001var.valueY = s;
-                      });
-                    },
+                    height: 100,
+                    base64: CALO001var.base64pic01,
                   ),
-                ],
-              ),
-              Row(
-                children: [
-                  SizedBox(
-                    width: 120,
-                    child: Center(
-                      child: Text("Result"),
-                    ),
-                  ),
-                  ComInputText(
-                    height: 40,
-                    width: 200,
-                    isEnabled: false,
-                    isContr: CALO001var.iscontrol,
-                    fnContr: (input) {
-                      setState(() {
-                        CALO001var.iscontrol = input;
-                      });
-                    },
-                    sValue: CALO001var.Result,
-                    returnfunc: (String s) {
-                      setState(() {
-                        CALO001var.Result = s;
-                      });
-                    },
-                  ),
-                ],
-              ),
-              Row(
-                children: [
-                  SizedBox(
-                    width: 120,
-                    child: Center(
-                      child: Text("FORMULA"),
-                    ),
-                  ),
-                  ComInputText(
-                    height: 40,
-                    width: 300,
-                    isEnabled: false,
-                    isContr: CALO001var.iscontrol,
-                    fnContr: (input) {
-                      setState(() {
-                        CALO001var.iscontrol = input;
-                      });
-                    },
-                    sValue: CALO001var.FORMULA,
-                    returnfunc: (String s) {
-                      setState(() {
-                        CALO001var.FORMULA = s;
-                      });
+                  IMGbutton(
+                    base64pic: CALO001var.base64pic01,
+                    setimg: (img) {
+                      CALO001var.base64pic01 = img;
+                      // context.read<CALO001_Bloc>().add(CALO001_READ());
                     },
                   ),
                 ],

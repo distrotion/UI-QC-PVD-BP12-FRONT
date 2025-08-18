@@ -40,7 +40,7 @@ class CLEARroom_Bloc extends Bloc<CLEARroom_Event, CLEARroomENV> {
       data: {},
     );
     final resPO5 = await Dio().post(
-      server + "SPLINEGAUGEdb",
+      server + "CALO001db",
       data: {},
     );
     final resPO6 = await Dio().post(
@@ -110,7 +110,7 @@ class CLEARroom_Bloc extends Bloc<CLEARroom_Event, CLEARroomENV> {
       );
     } else if (CLEARroomdata.room == 'PO5') {
       final response = await Dio().post(
-        server + 'SPLINEGAUGE-SETZERO',
+        server + 'CALO001-SETZERO',
         data: {},
       );
     } else if (CLEARroomdata.room == 'PO6') {
@@ -155,7 +155,7 @@ class CLEARroom_Bloc extends Bloc<CLEARroom_Event, CLEARroomENV> {
       data: {},
     );
     final resPO5 = await Dio().post(
-      server + "SPLINEGAUGEdb",
+      server + "CALO001db",
       data: {},
     );
     final resPO6 = await Dio().post(

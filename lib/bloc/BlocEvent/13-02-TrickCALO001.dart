@@ -5,6 +5,7 @@ import '../../data/global.dart';
 
 import '../../page/P13CALO001/CALO001var.dart';
 import '../../page/P1FIRSTUI/FIRSTuiVAR.dart';
+import '../../widget/common/imgset.dart';
 
 //-------------------------------------------------
 String server = GLOserver;
@@ -84,7 +85,9 @@ class TRICKER_CALO001_Bloc extends Bloc<TRICKER_Event, String> {
   }
 
   Future<void> _TRICKER_GETINtoCALO001(
-      String toAdd, Emitter<String> emit) async {
+    String toAdd,
+    Emitter<String> emit,
+  ) async {
     final response = await Dio().post(
       server + 'GETINtoCALO001',
       data: {
@@ -109,29 +112,31 @@ class TRICKER_CALO001_Bloc extends Bloc<TRICKER_Event, String> {
   }
 
   Future<void> _TRICKER_CALO001geteachITEM(
-      String toAdd, Emitter<String> emit) async {
+    String toAdd,
+    Emitter<String> emit,
+  ) async {
     final response = await Dio().post(
       server + 'CALO001-geteachITEM',
-      data: {
-        "ITEMs": CALO001var.ItemPickSELECT,
-      },
+      data: {"ITEMs": CALO001var.ItemPickSELECT},
     );
     emit('');
   }
 
   Future<void> _TRICKER_CALO001geteachGRAPH(
-      String toAdd, Emitter<String> emit) async {
+    String toAdd,
+    Emitter<String> emit,
+  ) async {
     final response = await Dio().post(
       server + 'CALO001-geteachGRAPH',
-      data: {
-        "GAPname": CALO001var.GAPname,
-      },
+      data: {"GAPname": CALO001var.GAPname},
     );
     emit('');
   }
 
   Future<void> _TRICKER_CALO001confirmdata(
-      String toAdd, Emitter<String> emit) async {
+    String toAdd,
+    Emitter<String> emit,
+  ) async {
     final response = await Dio().post(
       server + 'CALO001-confirmdata',
       data: {
@@ -146,34 +151,31 @@ class TRICKER_CALO001_Bloc extends Bloc<TRICKER_Event, String> {
         "Result1": CALO001var.Result1,
         "Result2": CALO001var.Result2,
         "Result": CALO001var.Result,
+        "PIC": CALO001var.base64pic01,
       },
     );
+    CALO001var.base64pic01 = imgw;
     emit('');
   }
 
   Future<void> _TRICKER_CALO001CLEAR(String toAdd, Emitter<String> emit) async {
-    final response = await Dio().post(
-      server + 'CALO001-CLEAR',
-      data: {},
-    );
+    final response = await Dio().post(server + 'CALO001-CLEAR', data: {});
     emit('');
   }
 
   Future<void> _TRICKER_CALO001RESETVALUE(
-      String toAdd, Emitter<String> emit) async {
-    final response = await Dio().post(
-      server + 'CALO001-RESETVALUE',
-      data: {},
-    );
+    String toAdd,
+    Emitter<String> emit,
+  ) async {
+    final response = await Dio().post(server + 'CALO001-RESETVALUE', data: {});
     emit('');
   }
 
   Future<void> _TRICKER_CALO001SETZERO(
-      String toAdd, Emitter<String> emit) async {
-    final response = await Dio().post(
-      server + 'CALO001-SETZERO',
-      data: {},
-    );
+    String toAdd,
+    Emitter<String> emit,
+  ) async {
+    final response = await Dio().post(server + 'CALO001-SETZERO', data: {});
     emit('');
   }
 
@@ -181,7 +183,9 @@ class TRICKER_CALO001_Bloc extends Bloc<TRICKER_Event, String> {
   //TRICKER_CALO001FINISH
 
   Future<void> _TRICKER_CALO001FINISH(
-      String toAdd, Emitter<String> emit) async {
+    String toAdd,
+    Emitter<String> emit,
+  ) async {
     final response = await Dio().post(
       // server + 'CALO001-FINISH-CAL1',
       server + 'CALO001-FINISH',

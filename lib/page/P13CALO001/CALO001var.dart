@@ -2,6 +2,7 @@ import 'dart:async';
 
 import '../../model/model.dart';
 import '../../widget/QCWIDGET/consolelayout.dart';
+import '../../widget/common/imgset.dart';
 
 class CALO001var {
   static bool iscontrol = false;
@@ -54,6 +55,7 @@ class CALO001var {
   static String Result = '';
 
   static String FORMULA = '';
+  static String base64pic01 = imgw;
 }
 
 class CALO001SCHEMA {
