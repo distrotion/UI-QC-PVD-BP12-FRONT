@@ -48,5 +48,4 @@ String serverdata = 'http://172.23.10.40:1900/';
 // String GLOserverMASTER = "http://127.0.0.1:14750/";
 String GLOserverMASTER = "http://172.23.10.40:14750/";
 
-
 //3310298495

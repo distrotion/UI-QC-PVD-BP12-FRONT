@@ -326,12 +326,12 @@ class _ROCKWELL_CALO001bodyState extends State<ROCKWELL_CALO001body> {
         String FORMULA2 = '';
 
         if (CALO001var.valueX != '' && CALO001var.valueY != ''
-        // &&
-        // CALO001var.Result == '' &&
-        // CALO001var.Result1 == '' &&
-        // CALO001var.Result2 == '' &&
-        // CALO001var.valueZ != ''
-        ) {
+            // &&
+            // CALO001var.Result == '' &&
+            // CALO001var.Result1 == '' &&
+            // CALO001var.Result2 == '' &&
+            // CALO001var.valueZ != ''
+            ) {
           if (data.length > 0) {
             final definable = MathNodeExpression.getPotentialDefinable(
               data[0],
@@ -418,8 +418,8 @@ class _ROCKWELL_CALO001bodyState extends State<ROCKWELL_CALO001body> {
               CALO001var.ItemPickSELECT != '') {
             if (int.parse(CALO001var.POINTs) > CALO001var.confirmdata.length) {
               context.read<TRICKER_CALO001_Bloc>().add(
-                TRICKER_CALO001confirmdata(),
-              );
+                    TRICKER_CALO001confirmdata(),
+                  );
             } else {
               WORNINGpop(context, "Have completed POINTs");
             }
@@ -489,10 +489,10 @@ class _ROCKWELL_CALO001bodyState extends State<ROCKWELL_CALO001body> {
                             CALO001var.iscontrol = input;
                           });
                         },
-                        sValue: CALO001var.valueX,
+                        sValue: CALO001var.valueY,
                         returnfunc: (String s) {
                           setState(() {
-                            CALO001var.valueX = s;
+                            CALO001var.valueY = s;
                           });
                         },
                       ),
@@ -512,10 +512,10 @@ class _ROCKWELL_CALO001bodyState extends State<ROCKWELL_CALO001body> {
                             CALO001var.iscontrol = input;
                           });
                         },
-                        sValue: CALO001var.valueY,
+                        sValue: CALO001var.valueX,
                         returnfunc: (String s) {
                           setState(() {
-                            CALO001var.valueY = s;
+                            CALO001var.valueX = s;
                           });
                         },
                       ),

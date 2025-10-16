@@ -102,7 +102,9 @@ class TRICKER_GASHMVPVD003_Bloc extends Bloc<TRICKER_Event, String> {
   }
 
   Future<void> _TRICKER_GETINtoGASHMVPVD003(
-      String toAdd, Emitter<String> emit) async {
+    String toAdd,
+    Emitter<String> emit,
+  ) async {
     final response = await Dio().post(
       server + 'GETINtoGASHMVPVD003',
       data: {
@@ -127,29 +129,31 @@ class TRICKER_GASHMVPVD003_Bloc extends Bloc<TRICKER_Event, String> {
   }
 
   Future<void> _TRICKER_GASHMVPVD003geteachITEM(
-      String toAdd, Emitter<String> emit) async {
+    String toAdd,
+    Emitter<String> emit,
+  ) async {
     final response = await Dio().post(
       server + 'GASHMVPVD003-geteachITEM',
-      data: {
-        "ITEMs": GASHMVPVD003var.ItemPickSELECT,
-      },
+      data: {"ITEMs": GASHMVPVD003var.ItemPickSELECT},
     );
     emit('');
   }
 
   Future<void> _TRICKER_GASHMVPVD003geteachGRAPH(
-      String toAdd, Emitter<String> emit) async {
+    String toAdd,
+    Emitter<String> emit,
+  ) async {
     final response = await Dio().post(
       server + 'GASHMVPVD003-geteachGRAPH',
-      data: {
-        "GAPname": GASHMVPVD003var.GAPname,
-      },
+      data: {"GAPname": GASHMVPVD003var.GAPname},
     );
     emit('');
   }
 
   Future<void> _TRICKER_GASHMVPVD003confirmdata(
-      String toAdd, Emitter<String> emit) async {
+    String toAdd,
+    Emitter<String> emit,
+  ) async {
     final response = await Dio().post(
       server + 'GASHMVPVD003-confirmdata',
       data: {},
@@ -158,43 +162,50 @@ class TRICKER_GASHMVPVD003_Bloc extends Bloc<TRICKER_Event, String> {
   }
 
   Future<void> _TRICKER_GASHMVPVD003confirmdata1(
-      String toAdd, Emitter<String> emit) async {
+    String toAdd,
+    Emitter<String> emit,
+  ) async {
     final response = await Dio().post(
-      'http://172.101.33.151:1880/' + 'deptmv03',
+      'http://172.23.10.40:1885/' + 'deptmv03',
       data: {},
     );
     emit('');
   }
 
   Future<void> _TRICKER_GASHMVPVD003confirmdata2(
-      String toAdd, Emitter<String> emit) async {
+    String toAdd,
+    Emitter<String> emit,
+  ) async {
     final response = await Dio().post(
-      'http://172.101.33.151:1880/' + 'surfacemv03',
+      'http://172.23.10.40:1885/' + 'surfacemv03',
       data: {},
     );
     emit('');
   }
 
   Future<void> _TRICKER_GASHMVPVD003confirmdata3(
-      String toAdd, Emitter<String> emit) async {
+    String toAdd,
+    Emitter<String> emit,
+  ) async {
     final response = await Dio().post(
-      'http://172.101.33.151:1880/' + 'surfacemv03',
+      'http://172.23.10.40:1885/' + 'surfacemv03',
       data: {},
     );
     emit('');
   }
 
   Future<void> _TRICKER_GASHMVPVD003CLEAR(
-      String toAdd, Emitter<String> emit) async {
-    final response = await Dio().post(
-      server + 'GASHMVPVD003-CLEAR',
-      data: {},
-    );
+    String toAdd,
+    Emitter<String> emit,
+  ) async {
+    final response = await Dio().post(server + 'GASHMVPVD003-CLEAR', data: {});
     emit('');
   }
 
   Future<void> _TRICKER_GASHMVPVD003RESETVALUE(
-      String toAdd, Emitter<String> emit) async {
+    String toAdd,
+    Emitter<String> emit,
+  ) async {
     final response = await Dio().post(
       server + 'GASHMVPVD003-RESETVALUE',
       data: {},
@@ -203,7 +214,9 @@ class TRICKER_GASHMVPVD003_Bloc extends Bloc<TRICKER_Event, String> {
   }
 
   Future<void> _TRICKER_GASHMVPVD003SETZERO(
-      String toAdd, Emitter<String> emit) async {
+    String toAdd,
+    Emitter<String> emit,
+  ) async {
     final response = await Dio().post(
       server + 'GASHMVPVD003-SETZERO',
       data: {},
@@ -215,11 +228,10 @@ class TRICKER_GASHMVPVD003_Bloc extends Bloc<TRICKER_Event, String> {
   //TRICKER_GASHMVPVD003FINISH
 
   Future<void> _TRICKER_GASHMVPVD003FINISH(
-      String toAdd, Emitter<String> emit) async {
-    final response = await Dio().post(
-      server + 'GASHMVPVD003-FINISH',
-      data: {},
-    );
+    String toAdd,
+    Emitter<String> emit,
+  ) async {
+    final response = await Dio().post(server + 'GASHMVPVD003-FINISH', data: {});
     emit('');
   }
 

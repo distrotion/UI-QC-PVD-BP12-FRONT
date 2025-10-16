@@ -169,7 +169,7 @@ class TRICKER_PVDSCT001_Bloc extends Bloc<TRICKER_Event, String> {
   Future<void> _TRICKER_PVDSCT001confirmdata2(
       String toAdd, Emitter<String> emit) async {
     final response = await Dio().post(
-      'http://172.101.33.151:1880/' + 'surfacemv03',
+      'http://172.23.10.40:1885/' + 'surfacemv03',
       data: {},
     );
     emit('');
@@ -178,7 +178,7 @@ class TRICKER_PVDSCT001_Bloc extends Bloc<TRICKER_Event, String> {
   Future<void> _TRICKER_PVDSCT001confirmdata3(
       String toAdd, Emitter<String> emit) async {
     final response = await Dio().post(
-      'http://172.101.33.151:1880/' + 'surfacemv03',
+      'http://172.23.10.40:1885/' + 'surfacemv03',
       data: {},
     );
     emit('');

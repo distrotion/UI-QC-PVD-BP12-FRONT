@@ -189,8 +189,8 @@ class ReportPDFCommon_Cubit extends Cubit<CommonReportOutput> {
               : '',
           PO: BasicDATAr['PO'] != null ? BasicDATAr['PO'].toString() : '',
           CP: BasicDATAr['CP'] != null ? BasicDATAr['CP'].toString() : '',
-          CUSTOMER: BasicDATAr['CUSTNAME'] != null
-              ? BasicDATAr['CUSTNAME'].toString()
+          CUSTOMER: BasicDATAr['CUSTNAME_s'] != null
+              ? BasicDATAr['CUSTNAME_s'].toString()
               : '',
           PROCESS: BasicDATAr['PROCESS'] != null
               ? BasicDATAr['PROCESS'].toString()
@@ -206,8 +206,8 @@ class ReportPDFCommon_Cubit extends Cubit<CommonReportOutput> {
           TPKLOT: BasicDATAr['FG_CHARG'] != null
               ? BasicDATAr['FG_CHARG'].toString()
               : '',
-          MATERIAL: BasicDATAr['MATERIAL'] != null
-              ? BasicDATAr['MATERIAL'].toString()
+          MATERIAL: BasicDATAr['MATERIAL_s'] != null
+              ? BasicDATAr['MATERIAL_s'].toString()
               : '',
           QTY: BasicDATAr['QTY'] != null ? BasicDATAr['QTY'].toString() : '',
           UNITSAP: BasicDATAr['UNITSAP'] != null
@@ -354,78 +354,78 @@ class ReportPDFCommon_Cubit extends Cubit<CommonReportOutput> {
 
           double qty = 0;
 
-          if (databuffref['DATAlist'].length > 0) {
-            // print(databuffref['DATAlist']);
-            if (databuffref['DATA'].length > 0) {
-              // BasicCommonDATAs.TPKLOT =
-              //     databuffref['DATA']?[0]['TPKLOT'].toString() ?? '';
+          // if (databuffref['DATAlist'].length > 0) {
+          //   // print(databuffref['DATAlist']);
+          //   if (databuffref['DATA'].length > 0) {
+          //     // BasicCommonDATAs.TPKLOT =
+          //     //     databuffref['DATA']?[0]['TPKLOT'].toString() ?? '';
 
-              // BasicCommonDATAs.CUSLOT =
-              //     databuffref['DATA']?[0]['CUSLOT'].toString() ?? '';
+          //     // BasicCommonDATAs.CUSLOT =
+          //     //     databuffref['DATA']?[0]['CUSLOT'].toString() ?? '';
 
-              // qty = double.parse(
-              //     ConverstStr(databuffref['DATA']?[0]['QTY'].toString() ?? ''));
+          //     // qty = double.parse(
+          //     //     ConverstStr(databuffref['DATA']?[0]['QTY'].toString() ?? ''));
 
-              BasicCommonDATAs.TPKLOT = BasicDATAr['TPKLOT'].toString() ?? '';
+          //     BasicCommonDATAs.TPKLOT = BasicDATAr['TPKLOT'].toString() ?? '';
 
-              BasicCommonDATAs.CUSLOT = BasicDATAr['CUSLOT'].toString() ?? '';
+          //     BasicCommonDATAs.CUSLOT = BasicDATAr['CUSLOT'].toString() ?? '';
 
-              qty =
-                  double.parse(ConverstStr(BasicDATAr['QTY'].toString() ?? ''));
+          //     qty =
+          //         double.parse(ConverstStr(BasicDATAr['QTY'].toString() ?? ''));
 
-              List<String> lotlist = [];
-              for (var p = 0; p < databuffref['DATAlist'].length; p++) {
-                String groupM = BasicDATAr['Group'] != null
-                    ? BasicDATAr['Group'].toString()
-                    : '';
+          //     List<String> lotlist = [];
+          //     for (var p = 0; p < databuffref['DATAlist'].length; p++) {
+          //       String groupM = BasicDATAr['Group'] != null
+          //           ? BasicDATAr['Group'].toString()
+          //           : '';
 
-                String groupI = databuffref['DATAlist']![p]['Group'] != null
-                    ? databuffref['DATAlist']![p]['Group'].toString()
-                    : "";
+          //       String groupI = databuffref['DATAlist']![p]['Group'] != null
+          //           ? databuffref['DATAlist']![p]['Group'].toString()
+          //           : "";
 
-                String POR = BasicDATAr['ReferFrom'] != null
-                    ? BasicDATAr['ReferFrom'].toString()
-                    : "";
+          //       String POR = BasicDATAr['ReferFrom'] != null
+          //           ? BasicDATAr['ReferFrom'].toString()
+          //           : "";
 
-                String POO = databuffref['DATAlist']![p]['PO'] != null
-                    ? databuffref['DATAlist']![p]['PO'].toString()
-                    : "";
-                if ((groupM == groupI) && (POR != POO) && (POO != PO)) {
-                  print("--------->>");
-                  print(groupM);
-                  print(groupI);
-                  print("--------->>");
+          //       String POO = databuffref['DATAlist']![p]['PO'] != null
+          //           ? databuffref['DATAlist']![p]['PO'].toString()
+          //           : "";
+          //       if ((groupM == groupI) && (POR != POO) && (POO != PO)) {
+          //         print("--------->>");
+          //         print(groupM);
+          //         print(groupI);
+          //         print("--------->>");
 
-                  String lastst =
-                      databuffref['DATAlist']?[p]['TPKLOT'].toString() ?? '';
-                  // BasicCommonDATAs.TPKLOT = BasicCommonDATAs.TPKLOT +
-                  //     ',' +
-                  //     ('${lastst.substring(7, 10)}');
-                  // lotlist
-                  //   .add(int.parse(ConverstStr('${lastst.substring(7, 10)}')));
-                  if (lastst.length >= 10) {
-                    lotlist.add('${lastst.substring(7, 10)}');
-                  }
+          //         String lastst =
+          //             databuffref['DATAlist']?[p]['TPKLOT'].toString() ?? '';
+          //         // BasicCommonDATAs.TPKLOT = BasicCommonDATAs.TPKLOT +
+          //         //     ',' +
+          //         //     ('${lastst.substring(7, 10)}');
+          //         // lotlist
+          //         //   .add(int.parse(ConverstStr('${lastst.substring(7, 10)}')));
+          //         if (lastst.length >= 10) {
+          //           lotlist.add('${lastst.substring(7, 10)}');
+          //         }
 
-                  BasicCommonDATAs.CUSLOT = BasicCommonDATAs.CUSLOT +
-                      ',' +
-                      '${databuffref['DATAlist']?[p]['CUSLOT'].toString() ?? ''}';
+          //         BasicCommonDATAs.CUSLOT = BasicCommonDATAs.CUSLOT +
+          //             ',' +
+          //             '${databuffref['DATAlist']?[p]['CUSLOT'].toString() ?? ''}';
 
-                  qty = qty +
-                      double.parse(ConverstStr(
-                          databuffref['DATAlist']?[p]['QTY'].toString() ?? ''));
+          //         qty = qty +
+          //             double.parse(ConverstStr(
+          //                 databuffref['DATAlist']?[p]['QTY'].toString() ?? ''));
 
-                  print(lotlist);
+          //         print(lotlist);
 
-                  lotlist = lotlist..sort();
-                }
-              }
-              BasicCommonDATAs.TPKLOT = BasicCommonDATAs.TPKLOT +
-                  ',' +
-                  lotlist.toString().replaceAll("]", "").replaceAll("[", "");
-              BasicCommonDATAs.QTY = qty.toString();
-            }
-          }
+          //         lotlist = lotlist..sort();
+          //       }
+          //     }
+          //     BasicCommonDATAs.TPKLOT = BasicCommonDATAs.TPKLOT +
+          //         ',' +
+          //         lotlist.toString().replaceAll("]", "").replaceAll("[", "");
+          //     BasicCommonDATAs.QTY = qty.toString();
+          //   }
+          // }
           // print(qty);
           BasicCommonDATAs.CUSLOT =
               BasicCommonDATAs.CUSLOT.replaceAll(",,", ",");
@@ -480,8 +480,11 @@ class ReportPDFCommon_Cubit extends Cubit<CommonReportOutput> {
                     String ITEMname = '';
                     String METHODss = '';
                     String METHODname = '';
-                    String FREQ =
-                        '${POINTs} ${PATTERNlist['FINAL'][fi]['FREQUENCY'].toString().replaceAll('?', 'pcs/Lot').replaceAll('[]', 'pcs/Lot')}';
+                    String FREQ = PATTERNlist['FINAL'][fi]['FREQUENCY']
+                            .toString()
+                            .contains('%')
+                        ? '${PATTERNlist['FINAL'][fi]['FREQUENCY'].toString().replaceAll('?', 'pcs/Lot').replaceAll('[]', 'pcs/Lot')}'
+                        : '${POINTs} ${PATTERNlist['FINAL'][fi]['FREQUENCY'].toString().replaceAll('?', 'pcs/Lot').replaceAll('[]', 'pcs/Lot')}';
                     String SPECIFICATION = '';
                     String LOAD = PATTERNlist['FINAL'][fi]['LOAD'].toString();
 

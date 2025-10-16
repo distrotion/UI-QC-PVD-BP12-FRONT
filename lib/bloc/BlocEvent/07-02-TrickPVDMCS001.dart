@@ -10,7 +10,7 @@ import '07-01-PVDMCS001.dart';
 
 //-------------------------------------------------
 String server = GLOserver;
-String serverR = 'http://172.101.33.151:1880/';
+String serverR = 'http://172.23.10.40:1885/';
 
 abstract class TRICKER_Event {}
 

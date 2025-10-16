@@ -160,7 +160,7 @@ class TRICKER_GASHMVPVD001_Bloc extends Bloc<TRICKER_Event, String> {
   Future<void> _TRICKER_GASHMVPVD001confirmdata1(
       String toAdd, Emitter<String> emit) async {
     final response = await Dio().post(
-      'http://172.101.33.151:1880/' + 'deptmv01',
+      'http://172.23.10.40:1885/' + 'deptmv01',
       data: {},
     );
     emit('');
@@ -169,7 +169,7 @@ class TRICKER_GASHMVPVD001_Bloc extends Bloc<TRICKER_Event, String> {
   Future<void> _TRICKER_GASHMVPVD001confirmdata2(
       String toAdd, Emitter<String> emit) async {
     final response = await Dio().post(
-      'http://172.101.33.151:1880/' + 'surfacemv01',
+      'http://172.23.10.40:1885/' + 'surfacemv01',
       data: {},
     );
     emit('');
@@ -178,7 +178,7 @@ class TRICKER_GASHMVPVD001_Bloc extends Bloc<TRICKER_Event, String> {
   Future<void> _TRICKER_GASHMVPVD001confirmdata3(
       String toAdd, Emitter<String> emit) async {
     final response = await Dio().post(
-      'http://172.101.33.151:1880/' + 'surfacemv01',
+      'http://172.23.10.40:1885/' + 'surfacemv01',
       data: {},
     );
     emit('');
